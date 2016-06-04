@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Vertex<T> {
+public class Vertex<T>: CustomStringConvertible {
     public var data: T
     public var neighbors = [Edge<T>]()
     public var visited = false
@@ -17,7 +17,7 @@ public class Vertex<T> {
         self.data = data
     }
     
-    public var text: String {
+    public var description: String {
         return String(data)
     }
 }
