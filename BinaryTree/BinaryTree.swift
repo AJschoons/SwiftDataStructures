@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T>: CustomStringConvertible {
     public var data: T
     public var left: BinaryTreeNode<T>?
     public var right: BinaryTreeNode<T>?
@@ -16,9 +16,13 @@ public class BinaryTreeNode<T> {
     public init(data: T) {
         self.data = data
     }
+    
+    public var description: String {
+        return String(data)
+    }
 }
 
-public class BinaryTree<T> {
+public class BinaryTree<T>: CustomStringConvertible {
     public var root: BinaryTreeNode<T>?
     
     public init() { }
@@ -41,12 +45,12 @@ public class BinaryTree<T> {
         return result
     }
     
-    public var text: String {
+    public var description: String {
         guard let root = root else {
             return "Empty"
         }
         
-        return _text(root)
+        return _description(root)
     }
 }
 
@@ -81,17 +85,17 @@ private func _postOrderTraversal<T>(node: BinaryTreeNode<T>?, inout result: [T])
 }
 
 /// Uses reverse in-order-traversal
-private func _text<T>(node: BinaryTreeNode<T>, depth: Int = 0) -> String {
+private func _description<T>(node: BinaryTreeNode<T>, depth: Int = 0) -> String {
     var str = ""
     
     if let right = node.right {
-        str += _text(right, depth: depth + 1)
+        str += _description(right, depth: depth + 1)
     }
     
-    str += "\n" + String(count: depth*4, repeatedValue: Character(" ")) + String(node.data)
+    str += "\n" + String(count: depth*4, repeatedValue: Character(" ")) + node.description
     
     if let left = node.left {
-        str += _text(left, depth: depth + 1)
+        str += _description(left, depth: depth + 1)
     }
     
     return str
