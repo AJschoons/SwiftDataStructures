@@ -1,6 +1,6 @@
 //
 //  Queue.swift
-//  
+//
 //
 //  Created by adam on 5/9/16.
 //
@@ -36,6 +36,7 @@ public class Queue<T> {
         
     }
     
+    /// Add to the back of the Queue
     public func add(data: T) {
         let newNode = QueueNode<T>(data: data)
         guard let last = last, _ = first else {
@@ -48,6 +49,7 @@ public class Queue<T> {
         self.last = newNode
     }
     
+    /// Remove from the front of the Queue
     public func remove() -> T? {
         guard let last = last, first = first else {
             return nil
