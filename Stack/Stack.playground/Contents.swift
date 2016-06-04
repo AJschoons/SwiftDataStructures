@@ -1,19 +1,19 @@
 import Foundation
 
 var s = Stack<Int>()
-s.isEmpty()
-s.text
+assert(s.isEmpty())
+assert(s.description == "Empty")
 s.push(1)
-s.isEmpty()
+assert(!s.isEmpty())
 s.push(2)
 s.push(3)
 s.push(4)
-s.text
-s.peek()
-s.pop()
-s.pop()
-s.text
-s.pop()
-s.pop()
-s.isEmpty()
-s.pop()
+assert(s.description == "TOP: 4 -> 3 -> 2 -> 1")
+assert(s.peek() == 4)
+assert(s.pop() == 4)
+assert(s.pop() == 3)
+assert(s.description == "TOP: 2 -> 1")
+assert(s.pop() == 2)
+assert(s.pop() == 1)
+assert(s.isEmpty())
+assert(s.pop() == nil)

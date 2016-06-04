@@ -13,7 +13,7 @@ import Foundation
 
 import Foundation
 
-private class StackNode<T> {
+private class StackNode<T>: CustomStringConvertible {
     private(set) var data: T
     
     var next: StackNode<T>?
@@ -22,7 +22,7 @@ private class StackNode<T> {
         self.data = data
     }
     
-    var text: String {
+    var description: String {
         var str = String(data)
         if next == nil {
             str += ""
@@ -34,7 +34,7 @@ private class StackNode<T> {
 }
 
 
-public class Stack<T> {
+public class Stack<T>: CustomStringConvertible {
     
     private var top: StackNode<T>?
     
@@ -60,7 +60,7 @@ public class Stack<T> {
         return top == nil
     }
     
-    public var text: String {
+    public var description: String {
         guard let top = top else {
             return "Empty"
         }
@@ -69,7 +69,7 @@ public class Stack<T> {
         
         var node: StackNode<T>? = top
         while (node != nil) {
-            str += node!.text
+            str += node!.description
             node = node?.next
         }
         
