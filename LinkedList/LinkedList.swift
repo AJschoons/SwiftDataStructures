@@ -10,7 +10,7 @@ import UIKit
 
 import Foundation
 
-public class LinkedListNode<T: Equatable> {
+public class LinkedListNode<T: Equatable>: CustomStringConvertible {
     public var data: T
     public var next: LinkedListNode<T>?
     
@@ -18,7 +18,7 @@ public class LinkedListNode<T: Equatable> {
         self.data = data
     }
     
-    public var text: String {
+    public var description: String {
         var str = String(data)
         if next == nil {
             str += " -> nil"
@@ -35,7 +35,7 @@ public func ==<T>(lhs: LinkedListNode<T>, rhs: LinkedListNode<T>) -> Bool {
 
 
 
-public class LinkedList<T: Equatable> {
+public class LinkedList<T: Equatable>: CustomStringConvertible {
     
     init() {}
     
@@ -46,7 +46,7 @@ public class LinkedList<T: Equatable> {
     func findFirstNodeWithData(data: T) -> LinkedListNode<T>? { return nil }
     
     
-    public var text: String {
+    public var description: String {
         guard let head = head else {
             return "Empty"
         }
@@ -55,7 +55,7 @@ public class LinkedList<T: Equatable> {
         
         var node: LinkedListNode<T>? = head
         while (node != nil) {
-            str += node!.text
+            str += node!.description
             node = node?.next
         }
         

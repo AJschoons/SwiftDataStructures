@@ -3,32 +3,32 @@
 import UIKit
 
 let intLinkedList = UnorderedLinkedList<Int>()
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(5)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(7)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(2)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(369)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(3)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.insert(3)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.deleteFirstNodeWithData(3)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.deleteFirstNodeWithData(5)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.deleteFirstNodeWithData(2)
-intLinkedList.text
+intLinkedList.description
 intLinkedList.deleteFirstNodeWithData(9999)
-intLinkedList.text
+intLinkedList.description
 
-intLinkedList.findFirstNodeWithData(7)?.text
-intLinkedList.findFirstNodeWithData(369)?.text
-intLinkedList.findFirstNodeWithData(3)?.text
-intLinkedList.findFirstNodeWithData(9999)?.text
+intLinkedList.findFirstNodeWithData(7)?.description
+intLinkedList.findFirstNodeWithData(369)?.description
+intLinkedList.findFirstNodeWithData(3)?.description
+intLinkedList.findFirstNodeWithData(9999)?.description
 
 //
 // Sequence Type
