@@ -1,154 +1,77 @@
-//: Playground - noun: a place where people can play
-
-var str = "Hello, playground"
-
-//
-//  HashTable.swift
-//
-//
-//  Created by adam on 4/30/16.
-//
-//
-
 
 import Foundation
 
-public class HashTable<Key: Hashable> {
-    private var numberOfSlots: Int
-    private var count = 0
-    private var slotsUsed = 0
-    private var slots: [HashTableSlot<Key>?]
-    
-    public init(capacity: Int = 100) {
-        self.numberOfSlots = capacity
-        self.slots = [HashTableSlot<Key>?](count: capacity, repeatedValue: nil)
-    }
-    
-    public func insertKey(key: Key, withValue value: Any) {
-        let newNode = HashTableNode(key: key, value: value)
-        let slotNumber = slotForHash(newNode.key.hashValue)
-        
-        var slot: HashTableSlot<Key>
-        if slots[slotNumber] == nil {
-            slotsUsed += 1
-            slot = HashTableSlot<Key>()
-            slots[slotNumber] = slot
-        } else {
-            slot = self.slots[slotNumber]!
-        }
-        
-        if slot.addNode(newNode) {
-            count += 1
-        }
-    }
-    
-    public func valueForKey(key: Key) -> Any? {
-        let slotNumber = slotForHash(key.hashValue)
-        guard let slot = slots[slotNumber] else {
-            return nil
-        }
-        return slot.getNodeWithKey(key)?.value
-    }
-    
-    private func slotForHash(hash: Int) -> Int {
-        return hash % self.numberOfSlots
-    }
-}
-
-private class HashTableSlot<Key: Hashable> {
-    private var head: HashTableNode<Key>? = nil
-    
-    // TODO: keep nodes in slot ordered?
-    func addNode(node: HashTableNode<Key>) -> Bool {
-        guard let head = head else {
-            self.head = node
-            return true
-        }
-        
-        var lastNode: HashTableNode<Key> = head
-        while lastNode.next != nil {
-            if (lastNode.key == node.key) {
-                lastNode.value = node.value
-                return false
-            }
-            
-            lastNode = lastNode.next!
-        }
-        lastNode.next = node
-        return true
-    }
-    
-    func getNodeWithKey(key: Key) -> HashTableNode<Key>? {
-        var node: HashTableNode<Key>? = head
-        while node != nil {
-            if node!.key == key {
-                return node
-            } else {
-                node = node!.next
-            }
-        }
-        
-        return nil
-    }
-}
-
-private class HashTableNode<Key: Hashable> {
-    init(key: Key, value: Any) {
-        self.key = key
-        self.value = value
-    }
-    
-    private(set) var key: Key
-    private(set) var value: Any
-    var next: HashTableNode?
-}
-
 // Tests
 
-let ht = HashTable<String>(capacity: 3)
-ht.valueForKey("wow")
-ht.slots
-ht.slotsUsed
-ht.count
+let ht = HashTable<String, Int>(capacity: 3)
+assert(ht.slots.count == 3)
+ht.description
+assert(ht.valueForKey("wow") == nil)
+assert(ht.slotsUsed == 0)
+assert(ht.count == 0)
 
-ht.insertKey("wow", withValue: 10)
-ht.slots
-ht.slotsUsed
-ht.count
-ht.valueForKey("wow")
+ht.setKey("wow", withValue: 10)
+ht.description
+assert(ht.valueForKey("wow") == 10)
+assert(ht.slotsUsed == 1)
+assert(ht.count == 1)
 
-ht.insertKey("wow", withValue: 12)
-ht.slots
-ht.slotsUsed
-ht.count
-ht.valueForKey("wow")
+ht.setKey("wow", withValue: 12)
+ht.description
+assert(ht.valueForKey("wow") == 12)
+assert(ht.slotsUsed == 1)
+assert(ht.count == 1)
 
-ht.insertKey("a", withValue: 12)
-ht.valueForKey("a")
-ht.slots
-ht.slotsUsed
-ht.count
+ht.setKey("a", withValue: 12)
+ht.description
+assert(ht.valueForKey("a") == 12)
+assert(ht.slotsUsed == 2)
+assert(ht.count == 2)
 
-ht.insertKey("b", withValue: 13)
-ht.valueForKey("b")
-ht.slots
-ht.slotsUsed
-ht.count
+ht.setKey("b", withValue: 13)
+ht.description
+assert(ht.valueForKey("b") == 13)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 3)
 
-ht.insertKey("c", withValue: 14)
-ht.valueForKey("c")
-ht.slots
-ht.slotsUsed
-ht.count
+ht.setKey("c", withValue: 14)
+ht.description
+assert(ht.valueForKey("c") == 14)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 4)
 
-ht.insertKey("d", withValue: 15)
-ht.valueForKey("d")
-ht.slots
-ht.slotsUsed
-ht.count
+ht.setKey("d", withValue: 15)
+ht.description
+assert(ht.valueForKey("d") == 15)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 5)
 
-ht.insertKey("easdfasdfads", withValue: 16)
-ht.valueForKey("easdfasdfads")
-ht.slots
-ht.slotsUsed
-ht.count
+ht.setKey("easdfasdfads", withValue: 16)
+ht.description
+assert(ht.valueForKey("easdfasdfads") == 16)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 6)
+
+ht.setKey("f", withValue: 3)
+ht.description
+assert(ht.valueForKey("f") == 3)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 7)
+
+ht.setKey("f", withValue: 5)
+ht.description
+assert(ht.valueForKey("f") == 5)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 7)
+
+ht.setKey("d", withValue: -4)
+ht.description
+assert(ht.valueForKey("d") == -4)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 7)
+
+ht.setKey("wow", withValue: -100000)
+ht.description
+assert(ht.valueForKey("wow") == -100000)
+assert(ht.slotsUsed == 3)
+assert(ht.count == 7)
