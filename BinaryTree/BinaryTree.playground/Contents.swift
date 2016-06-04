@@ -7,7 +7,7 @@ bst.find(5)
 bst.inOrderTraversal
 bst.preOrderTraversal
 bst.postOrderTraversal
-bst.text
+bst.description
 
 // Did insert work?
 bst.insert(5)
@@ -16,7 +16,7 @@ bst.insert(3)
 bst.root?.data
 bst.root?.left?.data
 bst.root?.right?.data
-bst.text
+bst.description
 
 // Is find working?
 bst.find(5)
@@ -32,7 +32,7 @@ bst.insert(4)
 bst.insert(6)
 bst.insert(8)
 bst.insert(2)
-bst.text
+bst.description
 
 // Do the traversals still work?
 bst.inOrderTraversal
@@ -58,5 +58,5 @@ bst.insert(19)
 bst.insert(22)
 bst.insert(22)
 bst.insert(22)
-print(bst.text)
+print(bst.description)
 bst.inOrderTraversal
