@@ -1,14 +1,14 @@
 //
-//  LinkedList.swift
+//  LinkedListProtocol.swift
 //
 //
 //  Created by adam on 5/7/16.
 //
 //
 
-import UIKit
+import Swift
 
-import Foundation
+// http://krakendev.io/blog/generic-protocols-and-their-shortcomings
 
 public protocol LinkedListNode: AnyObject {
     associatedtype Data

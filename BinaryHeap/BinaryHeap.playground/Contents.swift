@@ -1,6 +1,4 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
+import Foundation
 
 var mh = BinaryHeap<Int>(comparsonOperator: <)
 isValidMinHeap(mh.heap)

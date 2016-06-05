@@ -6,9 +6,7 @@
 //
 //
 
-import UIKit
-
-import Foundation
+import Swift
 
 public class LinkedListNode<T: Equatable>: CustomStringConvertible {
     public var data: T

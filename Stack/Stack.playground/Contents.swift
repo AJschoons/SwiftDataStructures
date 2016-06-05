@@ -1,4 +1,4 @@
-import Foundation
+import Swift
 
 var s = Stack<Int>()
 assert(s.isEmpty())

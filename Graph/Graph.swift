@@ -1,22 +1,23 @@
 //
 //  Graph.swift
-//  
+//
 //
 //  Created by adam on 5/10/16.
 //
 //
 
-import Foundation
+import Swift
 
-public class Vertex<T> {
+public class Vertex<T>: CustomStringConvertible {
     public var data: T
     public var neighbors = [Edge<T>]()
+    public var visited = false
     
     public init(data: T) {
         self.data = data
     }
     
-    public var text: String {
+    public var description: String {
         return String(data)
     }
 }
@@ -24,7 +25,6 @@ public class Vertex<T> {
 public class Edge<T> {
     public var destination: Vertex<T>
     public var weight: Int = 0
-    public var visited = false
     
     public init(destination: Vertex<T>, weight: Int = 0) {
         self.destination = destination
@@ -60,9 +60,7 @@ public class Graph<T> {
     
     public func resetVisits() {
         for vertex in vertices {
-            for edge in vertex.neighbors {
-                edge.visited = false
-            }
+            vertex.visited = false
         }
     }
 }

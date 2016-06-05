@@ -1,6 +1,6 @@
 //
 //  BinaryHeap.swift
-//  
+//
 //
 //  Created by adam on 5/10/16.
 //
@@ -16,7 +16,7 @@ public class BinaryHeap<T: Comparable> {
         self.compare = comparsonOperator
     }
     
-    // O(log(n))
+    /// O(log(n))
     public func extract() -> T? {
         guard heap.count > 0 else { return nil }
         guard heap.count > 1 else { return heap.popLast() }
@@ -29,7 +29,7 @@ public class BinaryHeap<T: Comparable> {
         return extractedVal
     }
     
-    // O(log(n))
+    /// O(log(n))
     public func insert(data: T) {
         heap.append(data)
         percolateUp(heap.endIndex - 1)

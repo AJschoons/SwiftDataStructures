@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Swift
 
 private class QueueNode<T>: CustomStringConvertible {
     var data: T

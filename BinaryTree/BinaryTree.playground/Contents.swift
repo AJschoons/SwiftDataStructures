@@ -1,6 +1,4 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
+import Swift
 
 let bst = BinarySearchTree<Int>()
 bst.find(5)

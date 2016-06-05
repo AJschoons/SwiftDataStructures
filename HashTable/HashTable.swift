@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Swift
 
 public class HashTable<Key: Hashable, Value>: CustomStringConvertible {
     public private(set) var numberOfSlots: Int

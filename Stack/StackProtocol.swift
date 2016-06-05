@@ -1,17 +1,14 @@
 //
-//  Stack.swift
+//  StackProtocol.swift
 //  
 //
 //  Created by adam on 5/9/16.
 //
 //
 
-import Foundation
+import Swift
 
-//: Playground - noun: a place where people can play
 // http://krakendev.io/blog/generic-protocols-and-their-shortcomings
-
-import Foundation
 
 public protocol StackNodeType: AnyObject {
     associatedtype DataType

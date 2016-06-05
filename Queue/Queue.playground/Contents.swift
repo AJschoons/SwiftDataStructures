@@ -1,4 +1,4 @@
-//: Playground - noun: a place where people can play
+import Swift
 
 let q = Queue<Int>()
 assert(q.isEmpty())

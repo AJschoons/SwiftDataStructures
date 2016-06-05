@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import Swift
 
 public class Vertex<T>: CustomStringConvertible {
     public var data: T

@@ -6,12 +6,7 @@
 //
 //
 
-import Foundation
-
-//: Playground - noun: a place where people can play
-// http://krakendev.io/blog/generic-protocols-and-their-shortcomings
-
-import Foundation
+import Swift
 
 private class StackNode<T>: CustomStringConvertible {
     private(set) var data: T

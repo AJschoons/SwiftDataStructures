@@ -6,9 +6,9 @@
 //
 //
 
-import Foundation
+import Swift
 
-private class QueueNode<T> {
+private class QueueNode<T>: CustomStringConvertible {
     var data: T
     var next: QueueNode<T>?
     
@@ -16,7 +16,7 @@ private class QueueNode<T> {
         self.data = data
     }
     
-    var text: String {
+    var description: String {
         var str = String(data)
         if next == nil {
             str += "   :OUT"
@@ -27,7 +27,7 @@ private class QueueNode<T> {
     }
 }
 
-public class Queue<T> {
+public class Queue<T>: CustomStringConvertible {
     
     private var first: QueueNode<T>?
     private var last: QueueNode<T>?
@@ -36,7 +36,6 @@ public class Queue<T> {
         
     }
     
-    /// Add to the back of the Queue
     public func add(data: T) {
         let newNode = QueueNode<T>(data: data)
         guard let last = last, _ = first else {
@@ -49,7 +48,6 @@ public class Queue<T> {
         self.last = newNode
     }
     
-    /// Remove from the front of the Queue
     public func remove() -> T? {
         guard let last = last, first = first else {
             return nil
@@ -74,7 +72,7 @@ public class Queue<T> {
         return first.data
     }
     
-    public var text: String {
+    public var description: String {
         guard let last = last else {
             return "Empty"
         }
@@ -83,7 +81,7 @@ public class Queue<T> {
         
         var node: QueueNode? = last
         while (node != nil) {
-            str += node!.text
+            str += node!.description
             node = node?.next
         }
         

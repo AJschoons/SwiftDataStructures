@@ -1,7 +1,4 @@
-
-import Foundation
-
-// Tests
+import Swift
 
 let ht = HashTable<String, Int>(capacity: 3)
 assert(ht.slots.count == 3)
